@@ -3,24 +3,12 @@ import dataclasses
 from typing import Callable
 
 
-@dataclasses.dataclass
-class Product:
-    name: str
-    brand: str
-    cost: float
-    bulk_amount: int
-    bulk_cost: float
-
-    def __hash__(self):
-        return hash(f"{self.name}_{self.brand}")
-
-
 def try_parse(label: str, data_type: Callable[[str], int | float]):
     while True:
         try:
             return data_type(input(label))
         except ValueError:
-            print(f"The value needs to be {data_type}")
+            print(f"The value needs to be {data_type.__name__}")
 
 
 database: set[Product] = set()
