@@ -4,7 +4,6 @@ import sqlalchemy as sql
 from sqlalchemy import orm
 
 engine = sql.create_engine("sqlite:///products.db")
-
 Mapped = orm.Mapped
 
 int_pk = Annotated[
@@ -13,6 +12,7 @@ int_pk = Annotated[
         unique=True, init=False, autoincrement=True, primary_key=True
     ),
 ]
+
 reg = orm.registry()
 
 
