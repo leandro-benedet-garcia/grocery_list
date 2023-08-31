@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "4.2"
 psycopg2-binary = "2.9"
+django-money = "3.2"
 
 [dev-packages]
 
