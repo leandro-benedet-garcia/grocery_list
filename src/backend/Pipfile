@@ -7,8 +7,8 @@ name = "pypi"
 django = "4.2"
 psycopg2-binary = "2.9"
 django-money = "3.2"
+djangorestframework = "==3.14"
 
 [dev-packages]
-
-[requires]
-python_version = "3.11"
+ruff = "*"
+black = "*"

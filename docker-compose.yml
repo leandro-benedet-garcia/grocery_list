@@ -7,16 +7,33 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  web:
-    build: .
+
+  backend:
+    build: src/backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./src/backend:/code
     ports:
       - "8000:8000"
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - DEV=1
     depends_on:
       - db
+    networks:
+      - dev-net
+
+  frontend:
+    image: node:current-alpine
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+      - API_BASE_URL=localhost:8000
+    volumes:
+      - ./src/frontend:/home/node/app
+    command: "npm run dev"
+    depends_on:
+      - backend

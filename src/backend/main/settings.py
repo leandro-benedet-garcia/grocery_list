@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-sut*ymeg0uoljzs^77-ukozh35)ors2&j*fm)h2y)jfr29$m"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = "DEBUG" in environ and environ["DEBUG"] == "1"
 
 ALLOWED_HOSTS = []
 
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "djmoney",
+    "rest_framework",
     "products",
     "django.contrib.admin",
     "django.contrib.auth",

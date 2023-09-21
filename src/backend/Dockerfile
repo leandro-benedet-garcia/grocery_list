@@ -7,6 +7,6 @@ WORKDIR /code
 COPY Pipfile Pipfile.lock ./
 RUN python -m pip install --upgrade pip && \
     pip install pipenv && \
-    pipenv install --dev --system --deploy
+    pipenv install --system --deploy
 
 WORKDIR /code/src/grocery_list/
